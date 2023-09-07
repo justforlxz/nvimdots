@@ -1,5 +1,7 @@
 return function()
 	local dashboard = require("alpha.themes.dashboard")
+    local settings  = require("core.settings")
+
 	require("modules.utils").gen_alpha_hl()
 
 	dashboard.section.header.val = {
@@ -23,6 +25,11 @@ return function()
 		[[⠿⠛⠛⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣯⣟⠷⢷⣿⡿⠋⠀⠀⠀⠀⣵⡀⢠⡿⠋⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
 		[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⢿⣿⣿⠂⠀⠀⠀⠀⠀⢀⣽⣿⣿⣿⣿⣿⣿⣿⣍⠛⠿⣿⣿⣿⣿⣿⣿]],
 	}
+
+	if settings["alpha_header"] ~= nil then
+		dashboard.section.header.val = settings["alpha_header"]
+	end
+
 	dashboard.section.header.opts.hl = "AlphaHeader"
 
 	local function button(sc, txt, leader_txt, keybind, keybind_opts)
